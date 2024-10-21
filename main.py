@@ -64,3 +64,42 @@ def main():
           q  Quit
           """)
     
+   
+    done = False
+
+    while not done:
+        choice = input("Enter your choice: ")
+        if choice == "1":
+            path = input("Enter the path to save the key: ")
+            pm.create_key(path)
+
+        elif choice == "2":
+            path = input("Enter the path to load the key: ")
+            pm.load_key(path)
+
+        elif choice == "3":
+            path = input("Enter the path to save the pass file: ")
+            pm.create_passfile(path, initial_values=password)
+
+        elif choice == "4":
+            path = input("Enter the path to load the pass file: ")
+            pm.load_passfile(path)
+
+        elif choice == "5":
+            site = input("Enter the site name: ")
+            password = input("Enter the password: ")
+            pm.add_password(site, password)
+
+        elif choice == "6":
+            site = input("Enter the site name: ")
+            print(f"Password for {site} is {pm.get_pass(site)}")
+
+        elif choice == "q":
+            done = True
+            print("Bye")
+
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()  
